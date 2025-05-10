@@ -1,4 +1,6 @@
 #!/usr/bin/python3
-for alpha in range(97, 123):
-    if alpha not in [101, 113]:
-        print("{}".format(chr(alpha)), end="")
+
+for letter in range(97, 123):
+    if chr(letter) != 'e' and chr(letter) != 'q':
+        print("{}".format(chr(letter)), end="")
+

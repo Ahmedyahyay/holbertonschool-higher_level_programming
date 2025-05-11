@@ -3,10 +3,9 @@
 import sys
 
 if __name__ == "__main__":
-    # Initialize the sum variable
-    total = 0
-    # Iterate through the arguments (starting from index 1 to skip the script name)
-    for arg in sys.argv[1:]:
-        total += int(arg)
-    # Print the total sum
-	print (total)
+    total_sum = 0
+
+    for arg_str in sys.argv[1:]:
+        total_sum += int(arg_str)
+
+    print(total_sum)

@@ -11,4 +11,3 @@ if __name__ == "__main__":
 
     # Print the total sum
     print(total)
-

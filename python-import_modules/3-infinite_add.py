@@ -9,4 +9,4 @@ if __name__ == "__main__":
     for arg in sys.argv[1:]:
         total += int(arg)
     # Print the total sum
-    print(total)
+	print (total)

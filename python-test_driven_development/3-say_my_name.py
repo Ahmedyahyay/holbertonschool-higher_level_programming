@@ -3,6 +3,7 @@
 This module defines a function that prints a full name.
 """
 
+
 def say_my_name(first_name, last_name=""):
     """
     Prints: My name is <first_name> <last_name>
@@ -12,7 +13,7 @@ def say_my_name(first_name, last_name=""):
     >>> say_my_name("Walter", "White")
     My name is Walter White
     >>> say_my_name("Bob")
-    My name is Bob 
+    My name is Bob
     >>> say_my_name(12, "White")
     Traceback (most recent call last):
     TypeError: first_name must be a string

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Square Class
 
-This is an empty class
+This class don't do anything for the moment
 
 """
 

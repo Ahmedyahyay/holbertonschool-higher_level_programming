@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module defining Shape abstract base class and concrete classes Circle and Rectangle"""
+"""Module defining Shape abstract classes Circle and Rectangle"""
 
 from abc import ABC, abstractmethod
 import math

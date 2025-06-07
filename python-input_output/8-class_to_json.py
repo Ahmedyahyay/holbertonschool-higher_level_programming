@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-from json import loads
+"""This module provides a function to convert a class instance into a JSON-serializable dictionary."""
 
-
-def load_from_json_file(filename):
-    with open(filename, encoding='utf-8') as f:
-        return loads(f.read())
+def class_to_json(obj):
+    """Returns the dictionary description of an object for JSON serialization."""
+    return obj.__dict__

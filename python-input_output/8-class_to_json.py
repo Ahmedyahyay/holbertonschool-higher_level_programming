@@ -1,9 +1,7 @@
-#!/usr/bin/pyhton3
-"""This module contain a function Returns the dictionary
- description of an object for JSON serialization"""
+#!/usr/bin/python3
+from json import loads
 
 
-def class_to_json(obj):
-    """Returns the dictionary description of an
- object for JSON serialization"""
-    return obj.__dict__
+def load_from_json_file(filename):
+    with open(filename, encoding='utf-8') as f:
+        return loads(f.read())

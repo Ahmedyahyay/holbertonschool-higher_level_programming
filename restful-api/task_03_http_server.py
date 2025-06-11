@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+"""Simple API using http.server"""
+
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 
-class SimpleAPIHandler(BaseHTTPRequestHandler):
+class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
             self.send_response(200)
@@ -26,22 +28,17 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            self.wfile.write(json.dumps({"status": "OK"}).encode())
+            self.wfile.write(json.dumps("OK").encode())
 
         else:
             self.send_response(404)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            error_msg = {"error": "Endpoint not found"}
-            self.wfile.write(json.dumps(error_msg).encode())
-
-
-def run(server_class=HTTPServer, handler_class=SimpleAPIHandler, port=8000):
-    server_address = ('', port)
-    httpd = server_class(server_address, handler_class)
-    print(f'Server running on http://localhost:{port}')
-    httpd.serve_forever()
+            error_message = {"error": "Endpoint not found"}
+            self.wfile.write(json.dumps(error_message).encode())
 
 
 if __name__ == '__main__':
-    run()
+    server_address = ('', 8000)
+    httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
+    httpd.serve_forever()

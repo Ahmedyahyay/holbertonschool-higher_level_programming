@@ -28,14 +28,15 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            self.wfile.write(json.dumps("OK").encode())
+            response = {"status": "OK"}
+            self.wfile.write(json.dumps(response).encode())
 
         else:
             self.send_response(404)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            error_message = {"error": "Endpoint not found"}
-            self.wfile.write(json.dumps(error_message).encode())
+            error = {"error": "Not Found"}
+            self.wfile.write(json.dumps(error).encode())
 
 
 if __name__ == '__main__':

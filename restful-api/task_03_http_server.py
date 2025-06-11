@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Python web server"""
+
 import http.server
 import socketserver
 import json
@@ -26,26 +27,24 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
                 "city": "New York"
             }
             self.wfile.write(json.dumps(response_data).encode('utf-8'))
+
         elif self.path == "/status":
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            """response_data = {
-                "status": "OK"
-            }"""
             self.wfile.write(b"OK")
+
         else:
             self.send_response(404)
-            self.send_header("Content-type", "text/plain")
+            self.send_header("Content-type", "application/json")
             self.end_headers()
-            """response_data = {
+            response_data = {
                 "error": "Endpoint not found"
-            }"""
-            self.wfile.write(b"404 Not Found")
+            }
+            self.wfile.write(json.dumps(response_data).encode('utf-8'))
 
 
 Handler = MyHandler
-
 
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
     print(f"Serving at port {PORT}")

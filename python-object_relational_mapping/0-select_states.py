@@ -1,35 +1,37 @@
 #!/usr/bin/python3
 """
-Script that lists all states from the database hbtn_0e_0_usa.
-
-Connects to MySQL server using MySQLdb and retrieves states
-ordered by their id in ascending order.
+Lists all states from the database hbtn_0e_0_usa
+Usage: ./0-select_states.py <mysql_username> <mysql_password> <database_name>
 """
-
 import MySQLdb
 import sys
 
+if __name__ == "__main__":
+    # Get MySQL credentials from command-line arguments
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
 
-def list_states(username, password, dbname):
-    """
-    Connects to MySQL database and prints all states sorted by id.
-
-    Args:
-        username (str): MySQL username
-        password (str): MySQL password
-        dbname (str): database name
-    """
+    # Connect to the MySQL server on localhost:3306
     db = MySQLdb.connect(
-        host="localhost", port=3306, user=username, passwd=password, db=dbname
+        host="localhost",
+        port=3306,
+        user=username,
+        passwd=password,
+        db=db_name
     )
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
-    rows = cursor.fetchall()
-    for row in rows:
+
+    # Create a cursor to execute queries
+    cur = db.cursor()
+
+    # Execute the SELECT query to get all states ordered by id
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
+
+    # Fetch all rows and print each
+    for row in cur.fetchall():
         print(row)
-    cursor.close()
+
+    # Close cursor and connection
+    cur.close()
     db.close()
 
-
-if __name__ == "__main__":
-    list_states(sys.argv[1], sys.argv[2], sys.argv[3])

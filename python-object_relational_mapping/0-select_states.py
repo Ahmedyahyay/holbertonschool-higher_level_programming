@@ -1,30 +1,27 @@
 #!/usr/bin/python3
 """
-Lists all states from the database hbtn_0e_0_usa.
-Usage: ./0-select_states.py <mysql username> <mysql password> <database name>
+Lists all states from the database hbtn_0e_0_usa in ascending order by states.id
 """
-
 import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    # Connect to MySQL database
+    # Connect to MySQL server
     conn = MySQLdb.connect(
-        host="localhost",
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3],
-        port=3306
+        host="localhost", port=3306,
+        user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3]
     )
 
-    # Create cursor to execute queries
+    # Create a cursor
     cur = conn.cursor()
+
+    # Execute the query
     cur.execute("SELECT * FROM states ORDER BY id ASC")
 
     # Fetch and print all rows
     for row in cur.fetchall():
         print(row)
 
-    # Close cursor and connection
+    # Clean up
     cur.close()
     conn.close()

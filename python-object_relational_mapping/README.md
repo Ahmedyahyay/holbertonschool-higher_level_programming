@@ -1,4 +1,3 @@
-
 # Python - Object-relational mapping
 
 This project is part of the **Holberton School Higher Level Programming curriculum**, focused on learning **how to map Python classes to database tables using SQL and ORM (Object Relational Mapping)**.
@@ -49,4 +48,5 @@ Each file addresses a specific task related to SQL, MySQLdb, or SQLAlchemy usage
 | `12-model_state_update_id_2.py` | Updates the name of the state with `id = 2` |
 | `13-model_state_delete_a.py` | Deletes all states with names containing `a` |
 | `model_city.py` | Defines the `City` model |
-| `14-model_city_fetch_by_state.py` | Lists all cities by state using a relationship between models 
+| `14-model_city_fetch_by_state.py` | Lists all cities by state using a relationship between models |
+
